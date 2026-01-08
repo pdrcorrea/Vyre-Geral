@@ -1,67 +1,60 @@
-const CACHE_NAME = "pv-cache-v1";
-const STATIC_ASSETS = [
+const CACHE = "pv-panels-v1";
+
+const STATIC = [
   "/",
-  "/index.html",
-  "/sources.json",
   "/assets/pv.css",
-  "/assets/pv-core.js",
-  "/assets/pv-footer.js",
+  "/assets/pv.js",
   "/assets/logo-pontoview.png",
+
+  "/panels/dicas.html",
   "/panels/noticias.html",
   "/panels/esporte.html",
-  "/panels/cinema.html",
   "/panels/curiosidades.html",
   "/panels/charadas.html",
-  "/panels/nostalgia.html",
   "/panels/cotacao.html",
-  "/panels/loterias.html",
-  "/panels/humor.html",
 ];
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting())
-  );
+self.addEventListener("install", (e)=>{
+  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)).then(()=>self.skipWaiting()));
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
+self.addEventListener("activate", (e)=>{
+  e.waitUntil(self.clients.claim());
 });
 
-// Cache-first para estáticos, network-first para /api com fallback no cache
-self.addEventListener("fetch", (event) => {
-  const req = event.request;
+// static: cache-first / api: network-first com fallback cache
+self.addEventListener("fetch", (e)=>{
+  const req = e.request;
   const url = new URL(req.url);
 
-  // APIs do Worker (cache runtime)
-  if (url.pathname.startsWith("/api/") || url.host.endsWith("workers.dev")) {
-    event.respondWith(networkFirst(req));
-    return;
+  const isApi = url.pathname.startsWith("/api/") || url.hostname.endsWith("workers.dev");
+  if(isApi){
+    e.respondWith(networkFirst(req));
+  }else{
+    e.respondWith(cacheFirst(req));
   }
-
-  event.respondWith(cacheFirst(req));
 });
 
 async function cacheFirst(req){
-  const cache = await caches.open(CACHE_NAME);
-  const cached = await cache.match(req);
+  const c = await caches.open(CACHE);
+  const cached = await c.match(req);
   if(cached) return cached;
   const res = await fetch(req);
-  cache.put(req, res.clone());
+  c.put(req, res.clone());
   return res;
 }
 
 async function networkFirst(req){
-  const cache = await caches.open(CACHE_NAME);
+  const c = await caches.open(CACHE);
   try{
     const res = await fetch(req);
-    cache.put(req, res.clone());
+    c.put(req, res.clone());
     return res;
   }catch{
-    const cached = await cache.match(req);
+    const cached = await c.match(req);
     if(cached) return cached;
     return new Response(JSON.stringify({ items:[], meta:{ offline:true } }), {
-      headers: { "Content-Type":"application/json" }
+      headers:{ "Content-Type":"application/json" }
     });
   }
 }
