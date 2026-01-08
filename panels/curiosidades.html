@@ -1,41 +1,45 @@
 <!doctype html><html lang="pt-BR"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>PontoView • Curiosidades</title><link rel="stylesheet" href="../assets/pv.css"></head>
-<body>
-<div class="pvWrap">
-  <header class="pvHeader">
-    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
-      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+<title>PontoView • Curiosidades</title><link rel="stylesheet" href="../assets/pv.css">
+</head><body>
+<div class="pvStage"><div class="pvShell"><div class="pvFrame">
+  <div class="pvHeader">
+    <div class="pvHeaderLeft">
+      <div class="pvIconBadge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3a7 7 0 0 1 4 12c-1 1-1.5 1.7-1.5 3H9.5c0-1.3-.5-2-1.5-3A7 7 0 0 1 12 3z" stroke="white" stroke-width="2"/>
+          <path d="M10 21h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="pvHeaderTitle" id="pvHeaderTitle">CURIOSIDADES</div>
     </div>
-    <div class="pvHeaderRight"><div class="pvPill">🧠 Curiosidades</div></div>
-  </header>
+    <div class="pvClock" id="pvClock">--:--</div>
+  </div>
 
-  <main class="pvMain"><section class="pvCard">
-    <div class="pvTopline">
-      <h1 class="pvH1" id="pvTitle">Curiosidades</h1>
-      <div class="pvMeta"><span class="pvChip" id="pvChip">Fatos interessantes</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
-    </div>
-    <div class="pvList" id="pvList"></div>
-  </section></main>
+  <div class="pvSubbar">
+    <div class="pvSubLeft" id="pvSubText">HOJE • VOCÊ SABIA?</div>
+    <div class="pvStatus"><span class="pvDot" id="pvDot"></span><span id="pvStatusLabel">ONLINE</span></div>
+  </div>
 
-  <footer id="pvFooter"></footer>
-</div>
+  <div class="pvMain"><div class="pvCard"><div class="pvCardInner" id="pvCardBody"></div></div></div>
 
-<script src="../assets/pv-core.js"></script>
-<script src="../assets/pv-footer.js"></script>
+  <div class="pvFooter">
+    <div class="pvFooterSmall" id="pvFooterLeft">Carregando…</div>
+    <div class="pvFooterRight"><img class="pvLogo" src="../assets/logo-pontoview.png" alt="PontoView"></div>
+  </div>
+</div></div></div>
+
+<script src="../assets/pv.js"></script>
 <script>
-  PV.registerSW();
-  PV.renderFooter({ leftText:"Curiosidades • ideal para sala de espera", rightLogo:"../assets/logo-pontoview.png" });
-
-  PV.startPanel({
-    apiBase:"https://pv-content-worker.pedrhc258.workers.dev/",
-    endpoint:"/api/curiosidades",
-    title:"Curiosidades",
-    subtitle:"Conteúdo educativo e leve",
-    chip:"Rotativo",
-    refreshMs:300000,
-    rotateMs:9000,
-    items:6
+  PV.init({
+    apiBase: "https://pv-content-worker.pedrhc258.workers.dev/",
+    endpoint: "/api/curiosidades",
+    mode: "list",
+    headerTitle: "CURIOSIDADES",
+    subbarLeft: "HOJE • VOCÊ SABIA?",
+    footerLeft: "Curiosidades leves • offline OK",
+    refreshMs: 300000,
+    items: 6
   });
 </script>
 </body></html>
