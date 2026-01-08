@@ -3,7 +3,7 @@
 
   const PV = {
     cfg: {
-      apiBase: "https://SEU-WORKER.workers.dev", // TROQUE
+      apiBase: "https://pv-content-worker.pedrhc258.workers.dev/", // TROQUE
       refreshMs: 120000,
       rotateMs: 9000,
       timeoutMs: 8000,
