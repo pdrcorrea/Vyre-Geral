@@ -22,7 +22,7 @@
     ]
   },
   "apis": {
-    "cotacao_usd_brl": "https://SEU-WORKER.workers.dev/api/cotacao",
-    "loterias": "https://SEU-WORKER.workers.dev/api/loterias"
+    "cotacao_usd_brl": "https://pv-content-worker.pedrhc258.workers.dev/api/cotacao",
+    "loterias": "https://pv-content-worker.pedrhc258.workers.dev/api/loterias"
   }
 }
