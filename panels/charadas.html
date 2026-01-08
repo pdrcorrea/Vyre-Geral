@@ -1,41 +1,48 @@
 <!doctype html><html lang="pt-BR"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>PontoView • Charadas</title><link rel="stylesheet" href="../assets/pv.css"></head>
-<body>
-<div class="pvWrap">
-  <header class="pvHeader">
-    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
-      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+<title>PontoView • Charadas</title><link rel="stylesheet" href="../assets/pv.css">
+</head><body>
+<div class="pvStage"><div class="pvShell"><div class="pvFrame">
+  <div class="pvHeader">
+    <div class="pvHeaderLeft">
+      <div class="pvIconBadge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M10 9a2 2 0 1 1 4 0c0 2-2 2-2 4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="17.5" r="1" fill="white"/>
+          <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" opacity=".92"/>
+        </svg>
+      </div>
+      <div class="pvHeaderTitle" id="pvHeaderTitle">CHARADAS</div>
     </div>
-    <div class="pvHeaderRight"><div class="pvPill">❓ Charadas</div></div>
-  </header>
+    <div class="pvClock" id="pvClock">--:--</div>
+  </div>
 
-  <main class="pvMain"><section class="pvCard">
-    <div class="pvTopline">
-      <h1 class="pvH1" id="pvTitle">Charadas</h1>
-      <div class="pvMeta"><span class="pvChip" id="pvChip">Interação</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
-    </div>
-    <div class="pvList" id="pvList"></div>
-  </section></main>
+  <div class="pvSubbar">
+    <div class="pvSubLeft" id="pvSubText">HOJE • DESAFIO</div>
+    <div class="pvStatus"><span class="pvDot" id="pvDot"></span><span id="pvStatusLabel">ONLINE</span></div>
+  </div>
 
-  <footer id="pvFooter"></footer>
-</div>
+  <div class="pvMain"><div class="pvCard"><div class="pvCardInner" id="pvCardBody"></div></div></div>
 
-<script src="../assets/pv-core.js"></script>
-<script src="../assets/pv-footer.js"></script>
+  <div class="pvFooter">
+    <div class="pvFooterSmall" id="pvFooterLeft">Carregando…</div>
+    <div class="pvFooterRight"><img class="pvLogo" src="../assets/logo-pontoview.png" alt="PontoView"></div>
+  </div>
+</div></div></div>
+
+<script src="../assets/pv.js"></script>
 <script>
-  PV.registerSW();
-  PV.renderFooter({ leftText:"Charadas • desafio leve", rightLogo:"../assets/logo-pontoview.png" });
-
-  PV.startPanel({
-    apiBase:"https://pv-content-worker.pedrhc258.workers.dev/",
-    endpoint:"/api/charadas",
-    title:"Charadas",
-    subtitle:"Perguntas rápidas (com resposta no texto)",
-    chip:"Divertido",
-    refreshMs:600000,
-    rotateMs:9000,
-    items:6
+  PV.init({
+    apiBase: "https://pv-content-worker.pedrhc258.workers.dev/",
+    endpoint: "/api/charadas",
+    mode: "hero",
+    headerTitle: "CHARADAS",
+    subbarLeft: "HOJE • DESAFIO",
+    footerLeft: "Charadas leves • offline OK",
+    rotateMs: 12000,
+    refreshMs: 600000,
+    items: 20,
+    fallback: "O que é, o que é? Quanto mais você tira, maior fica?"
   });
 </script>
 </body></html>
