@@ -1,7 +1,7 @@
 /* pv-core.js — núcleo PontoView (sem framework) */
 (function () {
   const DEFAULTS = {
-    apiBase: "https://SEU-WORKER.workers.dev", // << TROQUE
+    apiBase: "https://pv-content-worker.pedrhc258.workers.dev/", // << TROQUE
     refreshMs: 60_000,
     rotateMs: 9_000,
     items: 6,
