@@ -1,41 +1,50 @@
 <!doctype html><html lang="pt-BR"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>PontoView • Humor</title><link rel="stylesheet" href="../assets/pv.css"></head>
-<body>
-<div class="pvWrap">
-  <header class="pvHeader">
-    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
-      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+<title>PontoView • Humor</title><link rel="stylesheet" href="../assets/pv.css">
+</head><body>
+<div class="pvStage"><div class="pvShell"><div class="pvFrame">
+
+  <div class="pvHeader">
+    <div class="pvHeaderLeft">
+      <div class="pvIconBadge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" opacity=".95"/>
+          <path d="M8.5 14.5c1 1.5 2.2 2.2 3.5 2.2s2.5-.7 3.5-2.2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 10h.01M15 10h.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="pvHeaderTitle" id="pvHeaderTitle">HUMOR</div>
     </div>
-    <div class="pvHeaderRight"><div class="pvPill">🙂 Humor</div></div>
-  </header>
+    <div class="pvClock" id="pvClock">--:--</div>
+  </div>
 
-  <main class="pvMain"><section class="pvCard">
-    <div class="pvTopline">
-      <h1 class="pvH1" id="pvTitle">Humor</h1>
-      <div class="pvMeta"><span class="pvChip" id="pvChip">Leve e positivo</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
-    </div>
-    <div class="pvList" id="pvList"></div>
-  </section></main>
+  <div class="pvSubbar">
+    <div class="pvSubLeft" id="pvSubText">HOJE • LEVE E POSITIVO</div>
+    <div class="pvStatus"><span class="pvDot" id="pvDot"></span><span id="pvStatusLabel">ONLINE</span></div>
+  </div>
 
-  <footer id="pvFooter"></footer>
-</div>
+  <div class="pvMain"><div class="pvCard"><div class="pvCardInner" id="pvCardBody"></div></div></div>
 
-<script src="../assets/pv-core.js"></script>
-<script src="../assets/pv-footer.js"></script>
+  <div class="pvFooter">
+    <div class="pvFooterSmall" id="pvFooterLeft">Carregando…</div>
+    <div class="pvFooterRight"><img class="pvLogo" src="../assets/logo-pontoview.png" alt="PontoView"></div>
+  </div>
+
+</div></div></div>
+
+<script src="../assets/pv.js"></script>
 <script>
-  PV.registerSW();
-  PV.renderFooter({ leftText:"Humor • sem conteúdo pesado", rightLogo:"../assets/logo-pontoview.png" });
-
-  PV.startPanel({
-    apiBase:"https://pv-content-worker.pedrhc258.workers.dev/",
-    endpoint:"/api/humor",
-    title:"Humor",
-    subtitle:"Frases curtas e leves",
-    chip:"Rotativo",
-    refreshMs:600000,
-    rotateMs:9000,
-    items:6
+  PV.init({
+    apiBase: "https://pv-content-worker.pedrhc258.workers.dev/",
+    endpoint: "/api/humor",
+    mode: "hero",
+    headerTitle: "HUMOR",
+    subbarLeft: "HOJE • LEVE E POSITIVO",
+    footerLeft: "Humor • rotativo • offline OK",
+    rotateMs: 12000,
+    refreshMs: 600000,
+    items: 12,
+    fallback: "Humor: Se o café não resolver, é porque você precisa de mais café."
   });
 </script>
 </body></html>
