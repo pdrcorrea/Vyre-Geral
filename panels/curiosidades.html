@@ -1,0 +1,41 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PontoView • Curiosidades</title><link rel="stylesheet" href="../assets/pv.css"></head>
+<body>
+<div class="pvWrap">
+  <header class="pvHeader">
+    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
+      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+    </div>
+    <div class="pvHeaderRight"><div class="pvPill">🧠 Curiosidades</div></div>
+  </header>
+
+  <main class="pvMain"><section class="pvCard">
+    <div class="pvTopline">
+      <h1 class="pvH1" id="pvTitle">Curiosidades</h1>
+      <div class="pvMeta"><span class="pvChip" id="pvChip">Fatos interessantes</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
+    </div>
+    <div class="pvList" id="pvList"></div>
+  </section></main>
+
+  <footer id="pvFooter"></footer>
+</div>
+
+<script src="../assets/pv-core.js"></script>
+<script src="../assets/pv-footer.js"></script>
+<script>
+  PV.registerSW();
+  PV.renderFooter({ leftText:"Curiosidades • ideal para sala de espera", rightLogo:"../assets/logo-pontoview.png" });
+
+  PV.startPanel({
+    apiBase:"https://SEU-WORKER.workers.dev",
+    endpoint:"/api/curiosidades",
+    title:"Curiosidades",
+    subtitle:"Conteúdo educativo e leve",
+    chip:"Rotativo",
+    refreshMs:300000,
+    rotateMs:9000,
+    items:6
+  });
+</script>
+</body></html>
