@@ -1,0 +1,28 @@
+{
+  "labels": {
+    "noticias": "Notícias (curadas)",
+    "esporte": "Esporte",
+    "cinema": "Cinema",
+    "curiosidades": "Curiosidades",
+    "charadas": "Charadas",
+    "nostalgia": "Nostalgia",
+    "cotacao": "Cotação",
+    "loterias": "Loterias",
+    "humor": "Humor"
+  },
+  "feeds": {
+    "noticias": [
+      "https://feeds.bbci.co.uk/portuguese/rss.xml"
+    ],
+    "esporte": [
+      "https://feeds.bbci.co.uk/sport/rss.xml"
+    ],
+    "cinema": [
+      "https://www.omelete.com.br/rss"
+    ]
+  },
+  "apis": {
+    "cotacao_usd_brl": "https://SEU-WORKER.workers.dev/api/cotacao",
+    "loterias": "https://SEU-WORKER.workers.dev/api/loterias"
+  }
+}
