@@ -1,0 +1,41 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PontoView • Cotação</title><link rel="stylesheet" href="../assets/pv.css"></head>
+<body>
+<div class="pvWrap">
+  <header class="pvHeader">
+    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
+      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+    </div>
+    <div class="pvHeaderRight"><div class="pvPill">💱 Cotação</div></div>
+  </header>
+
+  <main class="pvMain"><section class="pvCard">
+    <div class="pvTopline">
+      <h1 class="pvH1" id="pvTitle">Cotação (USD/BRL)</h1>
+      <div class="pvMeta"><span class="pvChip" id="pvChip">Mercado</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
+    </div>
+    <div class="pvList" id="pvList"></div>
+  </section></main>
+
+  <footer id="pvFooter"></footer>
+</div>
+
+<script src="../assets/pv-core.js"></script>
+<script src="../assets/pv-footer.js"></script>
+<script>
+  PV.registerSW();
+  PV.renderFooter({ leftText:"Cotação • mantém último valor offline", rightLogo:"../assets/logo-pontoview.png" });
+
+  PV.startPanel({
+    apiBase:"https://SEU-WORKER.workers.dev",
+    endpoint:"/api/cotacao",
+    title:"Cotação (USD/BRL)",
+    subtitle:"Atualização automática",
+    chip:"Dólar comercial",
+    refreshMs:300000,
+    rotateMs:12000,
+    items:4
+  });
+</script>
+</body></html>
