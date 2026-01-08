@@ -1,41 +1,47 @@
 <!doctype html><html lang="pt-BR"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>PontoView • Cinema</title><link rel="stylesheet" href="../assets/pv.css"></head>
-<body>
-<div class="pvWrap">
-  <header class="pvHeader">
-    <div class="pvHeaderLeft"><div class="pvBadge"><span class="pvBadgeDot"></span></div>
-      <div><div class="pvTitle">PontoView</div><div class="pvSub" id="pvSub">Atualizações automáticas</div></div>
+<title>PontoView • Cinema</title><link rel="stylesheet" href="../assets/pv.css">
+</head><body>
+<div class="pvStage"><div class="pvShell"><div class="pvFrame">
+
+  <div class="pvHeader">
+    <div class="pvHeaderLeft">
+      <div class="pvIconBadge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M4 7h16v10H4V7z" stroke="white" stroke-width="2"/>
+          <path d="M8 7l-2 3M14 7l-2 3M20 7l-2 3" stroke="white" stroke-width="2" opacity=".9"/>
+        </svg>
+      </div>
+      <div class="pvHeaderTitle" id="pvHeaderTitle">CINEMA</div>
     </div>
-    <div class="pvHeaderRight"><div class="pvPill">🎬 Cinema</div></div>
-  </header>
+    <div class="pvClock" id="pvClock">--:--</div>
+  </div>
 
-  <main class="pvMain"><section class="pvCard">
-    <div class="pvTopline">
-      <h1 class="pvH1" id="pvTitle">Cinema</h1>
-      <div class="pvMeta"><span class="pvChip" id="pvChip">Novidades</span><span class="pvMuted" id="pvStatus">Carregando…</span></div>
-    </div>
-    <div class="pvList" id="pvList"></div>
-  </section></main>
+  <div class="pvSubbar">
+    <div class="pvSubLeft" id="pvSubText">HOJE • NOVIDADES</div>
+    <div class="pvStatus"><span class="pvDot" id="pvDot"></span><span id="pvStatusLabel">ONLINE</span></div>
+  </div>
 
-  <footer id="pvFooter"></footer>
-</div>
+  <div class="pvMain"><div class="pvCard"><div class="pvCardInner" id="pvCardBody"></div></div></div>
 
-<script src="../assets/pv-core.js"></script>
-<script src="../assets/pv-footer.js"></script>
+  <div class="pvFooter">
+    <div class="pvFooterSmall" id="pvFooterLeft">Carregando…</div>
+    <div class="pvFooterRight"><img class="pvLogo" src="../assets/logo-pontoview.png" alt="PontoView"></div>
+  </div>
+
+</div></div></div>
+
+<script src="../assets/pv.js"></script>
 <script>
-  PV.registerSW();
-  PV.renderFooter({ leftText:"Cinema • dicas e novidades", rightLogo:"../assets/logo-pontoview.png" });
-
-  PV.startPanel({
-    apiBase:"https://pv-content-worker.pedrhc258.workers.dev/",
-    endpoint:"/api/cinema",
-    title:"Cinema",
-    subtitle:"Filmes, trailers e curiosidades",
-    chip:"Conteúdo leve",
-    refreshMs:240000,
-    rotateMs:9000,
-    items:6
+  PV.init({
+    apiBase: "https://pv-content-worker.pedrhc258.workers.dev/",
+    endpoint: "/api/cinema",
+    mode: "list",
+    headerTitle: "CINEMA",
+    subbarLeft: "HOJE • NOVIDADES",
+    footerLeft: "Cinema • atualizado automaticamente • offline OK",
+    refreshMs: 240000,
+    items: 6
   });
 </script>
 </body></html>
