@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PontoView • Painéis</title>
+  <link rel="stylesheet" href="./assets/pv.css">
+</head>
+<body>
+  <div class="pvWrap">
+    <header class="pvHeader">
+      <div class="pvHeaderLeft">
+        <div class="pvBadge"><span class="pvBadgeDot"></span></div>
+        <div>
+          <div class="pvTitle">PontoView</div>
+          <div class="pvSub">Catálogo de painéis (teste)</div>
+        </div>
+      </div>
+      <div class="pvHeaderRight">
+        <div class="pvPill">GitHub Pages</div>
+      </div>
+    </header>
+
+    <main class="pvMain">
+      <div class="pvCard">
+        <h2 style="margin:0 0 12px 0;">Abrir painéis</h2>
+        <div class="pvGrid">
+          <a class="pvLink" href="./panels/noticias.html">Notícias</a>
+          <a class="pvLink" href="./panels/esporte.html">Esporte</a>
+          <a class="pvLink" href="./panels/cinema.html">Cinema</a>
+          <a class="pvLink" href="./panels/curiosidades.html">Curiosidades</a>
+          <a class="pvLink" href="./panels/charadas.html">Charadas</a>
+          <a class="pvLink" href="./panels/nostalgia.html">Nostalgia</a>
+          <a class="pvLink" href="./panels/cotacao.html">Cotação (USD/BRL)</a>
+          <a class="pvLink" href="./panels/loterias.html">Loterias</a>
+          <a class="pvLink" href="./panels/humor.html">Humor</a>
+        </div>
+        <p class="pvMuted" style="margin-top:12px;">
+          Dica: use em tela cheia na TV.
+        </p>
+      </div>
+    </main>
+
+    <footer id="pvFooter"></footer>
+  </div>
+
+  <script src="./assets/pv-core.js"></script>
+  <script src="./assets/pv-footer.js"></script>
+  <script>
+    PV.registerSW();
+    PV.renderFooter({ leftText: "Base de painéis", rightLogo: "./assets/logo-pontoview.png" });
+  </script>
+</body>
+</html>
