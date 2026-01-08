@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PontoView • Dicas</title>
+  <link rel="stylesheet" href="../assets/pv.css">
+</head>
+<body>
+  <div class="pvStage">
+    <div class="pvShell">
+      <div class="pvFrame">
+
+        <!-- HEADER -->
+        <div class="pvHeader">
+          <div class="pvHeaderLeft">
+            <div class="pvIconBadge" aria-hidden="true">
+              <!-- ícone simples (pode trocar por SVG seu) -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="white" stroke-width="2" opacity=".92"/>
+                <path d="M9.5 12l1.8 1.8 3.7-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="pvHeaderTitle" id="pvHeaderTitle">DICAS DE SAÚDE</div>
+          </div>
+
+          <div class="pvClock" id="pvClock">--:--</div>
+        </div>
+
+        <!-- SUBBAR -->
+        <div class="pvSubbar">
+          <div class="pvSubLeft" id="pvSubText">HOJE • DICAS RÁPIDAS</div>
+          <div class="pvStatus">
+            <span class="pvDot" id="pvDot"></span>
+            <span id="pvStatusLabel">ONLINE</span>
+          </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="pvMain">
+          <div class="pvCard">
+            <div class="pvCardInner" id="pvCardBody">
+              <!-- aqui entra o conteúdo (hero/list) -->
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="pvFooter">
+          <div class="pvFooterSmall" id="pvFooterLeft">Carregando…</div>
+          <div class="pvFooterRight">
+            <img class="pvLogo" src="../assets/logo-pontoview.png" alt="PontoView">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/pv.js"></script>
+  <script>
+    PV.init({
+      apiBase: "https://SEU-WORKER.workers.dev",     // TROQUE
+      endpoint: "/api/dicas",
+      mode: "hero",
+      headerTitle: "DICAS DE SAÚDE",
+      subbarLeft: "HOJE • DICAS RÁPIDAS",
+      footerLeft: "Dicas automáticas • mantém offline se cair a internet",
+      rotateMs: 9000,
+      refreshMs: 180000,
+      items: 10,
+      fallback: "Mantenha seus pertences sob cuidado."
+    });
+  </script>
+</body>
+</html>
